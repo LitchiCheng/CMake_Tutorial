@@ -12,6 +12,13 @@ cmake_minimum_required(VERSION 3.15)
 # 设置项目名称
 #project(CMake_Tutorial)
 
+# 
+file(REMOVE_RECURSE ${CMAKE_CURRENT_SOURCE_DIR}/output)
+#
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/output)
+#
+set(OUTPUTPATH ${CMAKE_CURRENT_SOURCE_DIR}/output)
+
 # 设置项目名称和版本VERSION，@PROJECT_VERSION_MAJOR@被替换成1，@PROJECT_VERSION_MAJOR@被替换成0，@PROJECT_VERSION_PATCH@被替换成1
 project(CMake_Tutorial VERSION 1.0.1)
 
@@ -111,4 +118,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
                             ${EXTRA_LIBS}
                             subDirectoryLib3
                             )
+
+install(TARGETS ${PROJECT_NAME} DESTINATION ${OUTPUTPATH})
+
 
